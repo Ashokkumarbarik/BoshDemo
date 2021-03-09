@@ -1,0 +1,71 @@
+<section class="mt-8 pt-6 pb-4 pt-lg7 pb-lg-2 ">
+    <div class="container">
+
+        <p-table class="table table-striped appointments-details" #dt [value]="users" [(selection)]="selectedUsers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
+            <!-- <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Providers
+                    <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                  </span>
+                </div>
+            </ng-template> -->
+            <ng-template pTemplate="header">
+                <tr class="text-secondary">
+                    <!-- <th style="width: 3rem"></th> -->
+                    <th pSortableColumn="email">Email
+                        <p-sortIcon field="email"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="first_name">First Name
+                      <p-sortIcon field="first_name"></p-sortIcon>
+                  </th>
+
+                    <th pSortableColumn="last_name">Lat Name
+                        <p-sortIcon field="last_name"></p-sortIcon>
+                    </th>
+
+                    <th pSortableColumn="avatar">Avatar
+                        <p-sortIcon field="avatar"></p-sortIcon>
+                    </th>
+
+
+
+
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+                <tr class="p-selectable-row">
+
+
+                    <td>
+                        <span class="p-column-title"></span> {{customer.email}}
+                    </td>
+                    <td>
+
+                      <span class="image-text">{{customer.first_name}}</span>
+                  </td>
+                    <td>
+                      <span class="p-column-title"></span> {{customer.last_name}}
+                  </td>
+
+                    <td>
+                      <img  src="{{customer.avatar}}" width="32" style="vertical-align: middle" />
+
+                    </td>
+
+
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No customers found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</section>
